@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "subtareas")
-public class Subtareas {
+public final class Subtareas {
     /**
      * Identificador del Subtarea
      */
@@ -26,10 +26,10 @@ public class Subtareas {
     private String name;
 
     /**
-     * Relación de uno a muchos con la entidad todo.
+     * Relación de uno a muchos con la entidad tareas.
      */
     @OneToMany(
-            mappedBy = "groupList",
+            mappedBy = "groupListId",
             targetEntity = Tareas.class,
             cascade = CascadeType.REMOVE,
             fetch = FetchType.EAGER

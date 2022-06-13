@@ -26,9 +26,8 @@ import javax.persistence.FetchType;
 public class Tareas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "name", nullable = false, length = 30)
+
     private String name;
 
     private Boolean completed;
@@ -36,37 +35,7 @@ public class Tareas {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Subtareas.class, optional = false)
     @JsonBackReference
     @JoinColumn(name = "category")
-    private String groupListId;
+    private Subtareas groupListId;
 
-    public String getGroupListId() {
-        return groupListId;
-    }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
 }
