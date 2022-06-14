@@ -18,11 +18,13 @@ public final class Subtareas {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
 
     /**
      * Nombre del Subtarea
      */
+    @Column(name="name")
     private String name;
 
     /**
