@@ -24,7 +24,6 @@ public class SubtareaService {
      * @author Yeferson Valencia <Alejandro.yandd@gmail.com>
      * @since 1.0.0
      */
-    @Transactional(readOnly = true)
     public List<Subtareas> list(){
         return repository.findAll();
     }
@@ -35,7 +34,7 @@ public class SubtareaService {
      * @param list que se desea guardar.
      * @return Subtarea que fue guardado.
      */
-    @Transactional
+
     public Subtareas save(Subtareas list){
         return repository.save(list);
     }
@@ -46,7 +45,7 @@ public class SubtareaService {
      * @param id de la lista que se desea encontrar.
      * @return Subtarea que fue obtenido.
      */
-    @Transactional(readOnly = true)
+
     public Subtareas getListById(Long id){
         return repository.findById(id).orElseThrow();
     }
@@ -57,7 +56,7 @@ public class SubtareaService {
      * @param id del Subtarea que se desea borrar
      *
      */
-    @Transactional
+
     public void delete(Long id){
         repository.delete(getListById(id));
     }

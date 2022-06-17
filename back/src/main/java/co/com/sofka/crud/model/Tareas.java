@@ -8,28 +8,33 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name="tareas")
-public class Tareas {
+public  class Tareas {
     @Id
+    @Getter
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
+    @Getter
+    @Setter
     @Column(name="name")
     private String name;
+    @Getter
+    @Setter
     @Column(name="complete")
     private Boolean completed;
+    @Getter
+    @Setter
     @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Subtareas.class, optional = false)
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = Subtareas.class,cascade = CascadeType.REMOVE)
+    @JoinColumn (name="subtareas_id")
     @JsonBackReference
-    @JoinColumn(name = "category")
-    private Subtareas groupListId;
-
+    private Collection<Subtareas> subtareaListas;
 
 }

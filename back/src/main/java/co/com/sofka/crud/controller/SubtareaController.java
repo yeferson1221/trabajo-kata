@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class SubtareaController {
-    @RestController
-    @CrossOrigin(origins = "http://localhost:3000")
-    public final class TodoListController {
+
 
         /**
          * Servicio para el manejo de los Subtarea.
@@ -19,19 +18,19 @@ public class SubtareaController {
         private SubtareaService service;
 
 
-        @GetMapping(value = "api/todoList")
+        @GetMapping(value = "api/subtareas")
         public List<Subtareas> list(){
             return service.list();
         }
 
 
-        @PostMapping(value = "api/todoList")
+        @PostMapping(value = "api/subtarea")
         public Subtareas save(@RequestBody Subtareas list){
             return service.save(list);
         }
 
 
-        @PutMapping(value = "api/todoList")
+        @PutMapping(value = "api/subtareas")
         public Subtareas update(@RequestBody Subtareas list){
             if(list.getId() != null){
                 return service.save(list);
@@ -40,15 +39,15 @@ public class SubtareaController {
         }
 
 
-        @DeleteMapping(value = "api/{id}/todoList")
+        @DeleteMapping(value = "api/{id}/subtarea")
         public void delete(@PathVariable("id")Long id){
             service.delete(id);
         }
 
 
-        @GetMapping(value = "api/{id}/todoList")
+        @GetMapping(value = "api/{id}/subtarea")
         public Subtareas get(@PathVariable("id") Long id){
             return service.getListById(id);
         }
-    }
+
 }
