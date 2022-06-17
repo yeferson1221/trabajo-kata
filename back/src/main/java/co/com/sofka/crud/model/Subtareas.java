@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -29,8 +30,18 @@ public  class Subtareas {
     @Column(name="name")
     private String name;
 
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name="subtareas_id",nullable = false)
+    private Tareas tareas;
+
     /**
      * Relación de uno a muchos con la entidad tareas.
      */
+    @Override
+    public String toString() {
+        return  name;
 
+    }
 }

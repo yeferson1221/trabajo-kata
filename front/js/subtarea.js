@@ -6,7 +6,7 @@ const d = document,
     $fragment = d.createDocumentFragment();
 const getAll = async() => {
     try {
-        let res = await fetch("http://localhost:8080/api/tareas"),
+        let res = await fetch("http://localhost:8080/api/subtareas"),
             json = await res.json();
 
         if (!res.ok) throw {
@@ -15,14 +15,15 @@ const getAll = async() => {
         };
 
         console.log(json);
+
         json.forEach(el => {
             $template.querySelector(".name").textContent = el.name;
-            $template.querySelector(".complete").textContent = el.completed;
+            $template.querySelector(".complete").textContent = el.tareas.name;
             $template.querySelector(".edit").dataset.id = el.id;
             $template.querySelector(".edit").dataset.name = el.name;
-            $template.querySelector(".edit").dataset.complete = el.completed;
+            $template.querySelector(".edit").dataset.complete = el.tareas.name;
             $template.querySelector(".delete").dataset.id = el.id;
-            $template.querySelector(".subtarea");
+
 
             let $clone = d.importNode($template, true);
             $fragment.appendChild($clone);
@@ -33,6 +34,7 @@ const getAll = async() => {
         let message = err.statusText || "Ocurrió un error";
         $table.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
     }
+
 }
 
 d.addEventListener("DOMContentLoaded", getAll);
@@ -74,10 +76,10 @@ d.addEventListener("submit", async e => {
                         },
                         body: JSON.stringify({
                             name: e.target.nombre.value,
-                            completed: e.target.estado.value
+                            tareas: e.target.estado.value
                         })
                     },
-                    res = await fetch("http://localhost:8080/api/tarea", options),
+                    res = await fetch("http://localhost:8080/api/subtarea", options),
                     json = await res.json();
 
                 if (!res.ok) throw {
@@ -110,10 +112,10 @@ d.addEventListener("submit", async e => {
                         },
                         body: JSON.stringify({
                             name: e.target.nombre.value,
-                            completed: e.target.estado.value
+                            tareas: e.target.estado.value
                         })
                     },
-                    res = await fetch(`http://localhost:8080/api/${e.target.id.value}/tarea`, options),
+                    res = await fetch(`http://localhost:8080/api/${e.target.id.value}/subtarea`, options),
                     json = await res.json();
 
                 if (!res.ok) throw {
@@ -132,7 +134,7 @@ d.addEventListener("submit", async e => {
 
 d.addEventListener("click", async e => {
     if (e.target.matches(".edit")) {
-        $title.textContent = "Editar Subtarea";
+        $title.textContent = "Editar Santo";
         $form.nombre.value = e.target.dataset.name;
         $form.estado.value = e.target.dataset.completed;
         $form.id.value = e.target.dataset.id;
@@ -160,7 +162,7 @@ d.addEventListener("click", async e => {
                             "Content-type": "application/json; charset=utf-8"
                         }
                     },
-                    res = await fetch(`http://localhost:8080/api/${e.target.dataset.id}/tarea`, options),
+                    res = await fetch(`http://localhost:8080/api/${e.target.dataset.id}/subtarea`, options),
                     json = await res.json();
 
                 if (!res.ok) throw {

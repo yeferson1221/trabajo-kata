@@ -31,10 +31,15 @@ public  class Tareas {
     private Boolean completed;
     @Getter
     @Setter
-    @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY,targetEntity = Subtareas.class,cascade = CascadeType.REMOVE)
     @JoinColumn (name="subtareas_id")
     @JsonBackReference
     private Collection<Subtareas> subtareaListas;
+
+    @Override
+    public String toString() {
+        return  name;
+
+    }
 
 }
