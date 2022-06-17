@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <!-- Fondo de estrellas usando particles.js -->
+    <div id="particles-js"></div>
+
+    <!-- Fondo con imagen fija que se mostrará en dispositivos móviles -->
+    <div id="estrellas"></div>
     <div class="container">
         <h1 class="col-12 text-center">Lista De Subtareas</h1>
         <section class="crud">
@@ -37,6 +42,24 @@
                         </div>
                         <input type="text" name="estado" placeholder="Ingresar estado de la tarea" required class="form-control" aria-label="Text input with radio button">
                     </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Tarea</label>
+                        <div class="col-sm-8">
+                            <select th:field="*{categorys}" multiple="multiple" class="form-control" required>
+                                <th:block th:each="category:${listCategory}">
+                                    <option th:text="${category.name}" th:value="${category.id}" >
+        
+                                    </option>
+                                </th:block>
+                            </select>
+                            <div id="categoryHelp" class="form-text">crearte una subtarea.</div>
+                        </div>
+                    </div>
+
+
+
                     <br>
                     <input type="submit" value="Enviar" class="btn btn-success float-right">
                     <br>
@@ -47,7 +70,7 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <table class="table table-success table-striped">
+                    <table class="table table-dark table-striped">
                         <thead>
                             <tr>
                                 <th scope="col" id="thead">Nombre</th>
@@ -72,6 +95,24 @@
 
             </tr>
         </template>
+
+        <!-- Nube 4 -->
+        <svg version="1.1" id="nube5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 349.9 107.1" style="enable-background:new 0 0 349.9 107.1;" xml:space="preserve">
+        <path id="XMLID_4_" class="nube" d="M310.6,60.1c-6.7,0-12.7,2.8-16.9,7.2c-3.1-3.5-7.7-5.8-12.8-5.8c-2.6,0-5.1,0.6-7.4,1.7
+          c-4-6.1-10.4-10.6-17.8-12.2c0.6-2.8,0.9-5.7,0.9-8.6c0-23.4-19-42.5-42.5-42.5c-17.9,0-33.2,11.1-39.4,26.8c-2-0.4-4-0.6-6.1-0.6
+          c-14.4,0-26.4,10.1-29.3,23.6c-3.7-1.6-7.8-2.6-12.1-2.6c-2.8,0-5.5,0.4-8,1.1c-1.1-16-14.5-28.7-30.8-28.7
+          c-8.6,0-16.3,3.5-21.9,9.1c-6.7-4.4-14.7-7-23.3-7c-23.4,0-42.5,19-42.5,42.5c0,23.4,19,42.5,42.5,42.5c0.8,0,267.5,0.5,267.5,0.5
+          c13,0,23.5-10.5,23.5-23.5C334.1,70.6,323.6,60.1,310.6,60.1z"/>
+      </svg>
+
+        <!-- Nube 4 -->
+        <svg version="1.1" id="nube4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 349.9 107.1" style="enable-background:new 0 0 349.9 107.1;" xml:space="preserve">
+          <path id="XMLID_4_" class="nube" d="M310.6,60.1c-6.7,0-12.7,2.8-16.9,7.2c-3.1-3.5-7.7-5.8-12.8-5.8c-2.6,0-5.1,0.6-7.4,1.7
+            c-4-6.1-10.4-10.6-17.8-12.2c0.6-2.8,0.9-5.7,0.9-8.6c0-23.4-19-42.5-42.5-42.5c-17.9,0-33.2,11.1-39.4,26.8c-2-0.4-4-0.6-6.1-0.6
+            c-14.4,0-26.4,10.1-29.3,23.6c-3.7-1.6-7.8-2.6-12.1-2.6c-2.8,0-5.5,0.4-8,1.1c-1.1-16-14.5-28.7-30.8-28.7
+            c-8.6,0-16.3,3.5-21.9,9.1c-6.7-4.4-14.7-7-23.3-7c-23.4,0-42.5,19-42.5,42.5c0,23.4,19,42.5,42.5,42.5c0.8,0,267.5,0.5,267.5,0.5
+            c13,0,23.5-10.5,23.5-23.5C334.1,70.6,323.6,60.1,310.6,60.1z"/>
+        </svg>
 
         <script src="../js/subtarea.js"></script>
         <script src="../js/card.js"></script>

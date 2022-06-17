@@ -132,7 +132,7 @@ d.addEventListener("submit", async e => {
 
 d.addEventListener("click", async e => {
     if (e.target.matches(".edit")) {
-        $title.textContent = "Editar Subtarea";
+        $title.textContent = "Editar Tarea";
         $form.nombre.value = e.target.dataset.name;
         $form.estado.value = e.target.dataset.completed;
         $form.id.value = e.target.dataset.id;

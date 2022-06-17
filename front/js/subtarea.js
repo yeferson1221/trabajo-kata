@@ -134,9 +134,9 @@ d.addEventListener("submit", async e => {
 
 d.addEventListener("click", async e => {
     if (e.target.matches(".edit")) {
-        $title.textContent = "Editar Santo";
+        $title.textContent = "Editar Subtareas";
         $form.nombre.value = e.target.dataset.name;
-        $form.estado.value = e.target.dataset.completed;
+        $form.estado.value = e.target.dataset.tareas;
         $form.id.value = e.target.dataset.id;
     }
 
