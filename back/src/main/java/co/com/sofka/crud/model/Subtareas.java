@@ -33,7 +33,7 @@ public  class Subtareas {
     @Getter
     @Setter
     @ManyToOne
-    @JoinColumn(name="subtareas_id",nullable = false)
+    @JoinColumn(name="subtareas_id")
     private Tareas tareas;
 
     /**
@@ -41,7 +41,9 @@ public  class Subtareas {
      */
     @Override
     public String toString() {
-        return  name;
-
+        return "Tareas{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -40,28 +40,40 @@
                                 <input type="radio" aria-label="Radio button for following text input">
                             </div>
                         </div>
-                        <input type="text" name="estado" placeholder="Ingresar estado de la tarea" required class="form-control" aria-label="Text input with radio button">
+                        <input type="text" name="estado" placeholder="Ingresar estado de la tarea" class="form-control" aria-label="Text input with radio button">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="radio" aria-label="Radio button for following text input">
+                            </div>
+                        </div>
+                        <input type="number" name="tare" placeholder="Ingresar estado de la tarea" required class="form-control" aria-label="Text input with radio button">
                     </div>
 
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label class="col-form-label col-sm-2">Tarea</label>
                         <div class="col-sm-8">
-                            <select th:field="*{categorys}" multiple="multiple" class="form-control" required>
-                                <th:block th:each="category:${listCategory}">
-                                    <option th:text="${category.name}" th:value="${category.id}" >
+                            <select multiple="multiple" class="form-control" required>
+                                <th:block >
+                                    <option  th:value="${category.id}" >
         
                                     </option>
                                 </th:block>
                             </select>
                             <div id="categoryHelp" class="form-text">crearte una subtarea.</div>
                         </div>
-                    </div>
+                    </div> -->
 
 
 
                     <br>
                     <input type="submit" value="Enviar" class="btn btn-success float-right">
+
+
+                    <input type="submit" value="Volver" class="btn btn-success float-left" onclick="location.href='http://127.0.0.1:5500'">
                     <br>
                     <input type="hidden" name="id">
                 </form>
@@ -73,8 +85,9 @@
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
+                                <th scope="col" id="thead">ID Relacion</th>
                                 <th scope="col" id="thead">Nombre</th>
-                                <th scope="col" id="thead">relacion</th>
+                                <th scope="col" id="thead">Tarea</th>
                                 <th scope="col" id="thead">Acciones</th>
                             </tr>
                         </thead>
@@ -86,8 +99,10 @@
         </section>
         <template id="crud-template">
             <tr>
+                <td class="tarea"></td>
                 <td class="name"></td>
                 <td class="complete"></td>
+                
                 <td>
                     <button class="edit  btn btn-success" type="button">Editar</button>
                     <button class="delete btn btn-danger" type="button">Eliminar</button>

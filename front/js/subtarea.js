@@ -19,8 +19,10 @@ const getAll = async() => {
         json.forEach(el => {
             $template.querySelector(".name").textContent = el.name;
             $template.querySelector(".complete").textContent = el.tareas.name;
+            $template.querySelector(".tarea").textContent = el.tareas.id;
             $template.querySelector(".edit").dataset.id = el.id;
             $template.querySelector(".edit").dataset.name = el.name;
+            $template.querySelector(".edit").dataset.tarea = el.tareas.id;
             $template.querySelector(".edit").dataset.complete = el.tareas.name;
             $template.querySelector(".delete").dataset.id = el.id;
 
@@ -70,16 +72,19 @@ d.addEventListener("submit", async e => {
 
             try {
                 let options = {
-                        method: "POST",
-                        headers: {
-                            "Content-type": "application/json; charset=utf-8"
-                        },
-                        body: JSON.stringify({
-                            name: e.target.nombre.value,
-                            tareas: e.target.estado.value
-                        })
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
                     },
-                    res = await fetch("http://localhost:8080/api/subtarea", options),
+                    body: JSON.stringify({
+                        name: e.target.nombre.value,
+                        tarea: e.target.tare.value
+                    })
+
+                }
+                console.log(options);
+
+                res = await fetch("http://localhost:8080/api/subtarea", options),
                     json = await res.json();
 
                 if (!res.ok) throw {
@@ -112,7 +117,8 @@ d.addEventListener("submit", async e => {
                         },
                         body: JSON.stringify({
                             name: e.target.nombre.value,
-                            tareas: e.target.estado.value
+                            complete: e.target.estado.value,
+                            tarea: e.target.tare.value
                         })
                     },
                     res = await fetch(`http://localhost:8080/api/${e.target.id.value}/subtarea`, options),
@@ -136,8 +142,11 @@ d.addEventListener("click", async e => {
     if (e.target.matches(".edit")) {
         $title.textContent = "Editar Subtareas";
         $form.nombre.value = e.target.dataset.name;
-        $form.estado.value = e.target.dataset.tareas;
+        $form.estado.value = e.target.dataset.complete;
+        $form.tare.value = e.target.dataset.tarea;
+        console.log(e.target.dataset.tarea + "tttt")
         $form.id.value = e.target.dataset.id;
+
     }
 
     if (e.target.matches(".delete")) {
