@@ -30,7 +30,7 @@ public class SubtareaController {
         }
 
 
-        @PutMapping(value = "api/subtareas")
+        @PutMapping(value = "api/{id}/subtarea")
         public Subtareas update(@RequestBody Subtareas list){
             if(list.getId() != null){
                 return service.save(list);

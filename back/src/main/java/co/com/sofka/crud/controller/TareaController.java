@@ -21,7 +21,7 @@ public  class TareaController {
         return service.save(tarea);
     }
 
-    @PutMapping(value = "api/tarea")
+    @PutMapping(value = "api/{id}/tarea")
     public Tareas update(@RequestBody Tareas tarea){
         if(tarea.getId() != null){
             return service.save(tarea);

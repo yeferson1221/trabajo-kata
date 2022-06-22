@@ -78,7 +78,11 @@ d.addEventListener("submit", async e => {
                     },
                     body: JSON.stringify({
                         name: e.target.nombre.value,
-                        tarea: e.target.tare.value
+
+                        tareas: {
+                            id: e.target.tare.value
+                        }
+
                     })
 
                 }
@@ -116,9 +120,12 @@ d.addEventListener("submit", async e => {
                             "Content-type": "application/json; charset=utf-8"
                         },
                         body: JSON.stringify({
+                            id: e.target.id.value,
                             name: e.target.nombre.value,
-                            complete: e.target.estado.value,
-                            tarea: e.target.tare.value
+                            tareas: {
+                                id: e.target.tare.value
+                            }
+
                         })
                     },
                     res = await fetch(`http://localhost:8080/api/${e.target.id.value}/subtarea`, options),

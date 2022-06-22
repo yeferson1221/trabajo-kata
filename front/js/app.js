@@ -109,6 +109,7 @@ d.addEventListener("submit", async e => {
                             "Content-type": "application/json; charset=utf-8"
                         },
                         body: JSON.stringify({
+                            id: e.target.id.value,
                             name: e.target.nombre.value,
                             completed: e.target.estado.value
                         })
@@ -134,7 +135,7 @@ d.addEventListener("click", async e => {
     if (e.target.matches(".edit")) {
         $title.textContent = "Editar Tarea";
         $form.nombre.value = e.target.dataset.name;
-        $form.estado.value = e.target.dataset.completed;
+        $form.estado.value = e.target.dataset.complete;
         $form.id.value = e.target.dataset.id;
     }
 
